@@ -52,8 +52,8 @@ export default function CertificationsSection() {
               value={`item-${index}`}
               className="glass-card border rounded-lg overflow-hidden"
             >
-              <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-secondary/30">
-                <div className="flex items-center gap-3">
+              <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-secondary/30 [&>svg]:shrink-0">
+                <div className="flex items-center gap-3 flex-1 text-left">
                   <Badge>{certs.length}</Badge>
                   <span className="font-semibold">{category}</span>
                 </div>
