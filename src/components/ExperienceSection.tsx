@@ -69,7 +69,7 @@ export default function ExperienceSection() {
     },
     {
       company: "The University of Texas at Tyler",
-      position: "Research Assistant",
+      position: "Graduate Research Assistant",
       duration: "January 2023 - May 2024",
       location: "Tyler, TX, US",
       tech: ["R", "Python", "SQL", "TensorFlow", "Big Data", "Linux"],
@@ -125,36 +125,78 @@ export default function ExperienceSection() {
           <h2 className="text-3xl font-bold mb-2 tracking-tight">Work Experience</h2>
           <div className="h-1 w-20 bg-primary rounded"></div>
         </div>
-        
+
         <Accordion type="single" collapsible className="w-full space-y-4">
           {experiences.map((job, index) => (
-            <AccordionItem 
-              key={index} 
+            <AccordionItem
+              key={index}
               value={`item-${index}`}
               className="glass-card border rounded-lg overflow-hidden"
             >
               <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-secondary/30">
                 <div className="flex flex-col md:flex-row md:items-center gap-4 text-left w-full">
-                  <div className="bg-primary/10 rounded-full p-3 flex-shrink-0">
+                  <div className="hidden md:block bg-primary/10 rounded-full p-3 flex-shrink-0">
                     <Briefcase className="h-5 w-5 text-primary" />
                   </div>
                   <div className="flex-grow">
                     <div className="flex items-center gap-2">
                       <p className="font-bold">{job.position}</p>
                       {job.position === "Chief Technology Officer" && (
-                        <Badge variant="default" className="bg-primary/20 text-primary hover:bg-primary/30">
-                          Promoted from Full Stack Engineer
-                        </Badge>
+                        <>
+                          {/* Shown on md and larger screens */}
+                          <Badge
+                            variant="default"
+                            className="hidden md:inline bg-primary/20 text-primary hover:bg-primary/30"
+                          >
+                            Promoted from Full Stack Engineer
+                          </Badge>
+
+                          {/* Shown on screens smaller than md */}
+                          <Badge
+                            variant="default"
+                            className="inline md:hidden bg-primary/20 text-primary hover:bg-primary/30"
+                          >
+                            Promoted
+                          </Badge>
+                        </>
                       )}
                       {job.position === "Lab Technician" && (
-                        <Badge variant="default" className="bg-primary/20 text-primary hover:bg-primary/30">
-                          Promoted from Research Assistant
-                        </Badge>
+                        <>
+                          {/* Shown on md and larger screens */}
+                          <Badge
+                            variant="default"
+                            className="hidden md:inline bg-primary/20 text-primary hover:bg-primary/30"
+                          >
+                            Promoted from Research Assistant
+                          </Badge>
+
+                          {/* Shown on screens smaller than md */}
+                          <Badge
+                            variant="default"
+                            className="inline md:hidden bg-primary/20 text-primary hover:bg-primary/30"
+                          >
+                            Promoted
+                          </Badge>
+                        </>
                       )}
-                      {job.position === "Research Assistant" && (
-                        <Badge variant="default" className="bg-primary/20 text-primary hover:bg-primary/30">
-                          Promoted from Graduate Assistant
-                        </Badge>
+                      {job.position === "Graduate Research Assistant" && (
+                        <>
+                          {/* Shown on md and larger screens */}
+                          <Badge
+                            variant="default"
+                            className="hidden md:inline bg-primary/20 text-primary hover:bg-primary/30"
+                          >
+                            Promoted from Graduate Assistant
+                          </Badge>
+
+                          {/* Shown on screens smaller than md */}
+                          <Badge
+                            variant="default"
+                            className="inline md:hidden bg-primary/20 text-primary hover:bg-primary/30"
+                          >
+                            Promoted
+                          </Badge>
+                        </>
                       )}
                     </div>
                     <p className="text-primary">{job.company}</p>
@@ -174,7 +216,7 @@ export default function ExperienceSection() {
                       <Badge key={techIndex} variant="secondary">{tech}</Badge>
                     ))}
                   </div>
-                  
+
                   <h4 className="font-mono text-sm mb-2">Key achievements:</h4>
                   <ul className="list-disc list-outside pl-5 space-y-2">
                     {job.achievements.map((achievement, achieveIndex) => (

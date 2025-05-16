@@ -37,7 +37,7 @@ export default function EducationSection() {
           {educationList.map((edu, index) => (
             <Card key={index} className="glass-card transition-card">
               <CardContent className="p-6 flex flex-col md:flex-row md:items-center gap-4">
-                <div className="bg-primary/10 rounded-full p-4 flex-shrink-0">
+                <div className="hidden md:block bg-primary/10 rounded-full p-4 flex-shrink-0">
                   <GraduationCap className="h-8 w-8 text-primary" />
                 </div>
                 <div className="flex-grow">
