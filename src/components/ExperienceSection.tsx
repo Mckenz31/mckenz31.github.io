@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import {
   Accordion,
@@ -24,20 +23,20 @@ export default function ExperienceSection() {
       company: "Connect2Co",
       position: "Chief Technology Officer",
       duration: "October 2024 - Present",
-      location: "Texas, US",
+      location: "Philadelphia, PA, US",
       tech: ["React", "Node", "TypeScript", "AWS ECS", "RDS Postgres", "Lambda", "Cognito", "Amplify"],
       achievements: [
         "Led all aspects of product development, including full-stack engineering, database design, cloud infrastructure, and deployment.",
         "Built and managed a small technical team including a freelancer and a designer; oversaw execution, code quality, and UI/UX direction.",
         "Translated direct customer insights into feature development, resulting in 9 paying customers and 32 users.",
-        "Launched Connect2Co in February 2021, leading to a $300K federal letter of intent within one month."
+        "Launched Connect2Co in February 21, 2025, leading to a $300K federal letter of intent within one month."
       ]
     },
     {
       company: "Connect2Co",
       position: "Full Stack Engineer",
-      duration: "September 2024",
-      location: "Texas, US",
+      duration: "September 2024 - September 2024",
+      location: "Philadelphia, PA, US (Remote)",
       tech: ["React", "Node", "TypeScript", "AWS"],
       achievements: [
         "Carried out development, updates, and optimizations for the Connect2Co MVP, including implementing necessary fixes and enhancements.",
@@ -49,7 +48,7 @@ export default function ExperienceSection() {
       company: "Branchly",
       position: "Technical Intern",
       duration: "June 2024 - August 2024",
-      location: "Texas, US",
+      location: "Austin, TX, US (Remote)",
       tech: ["Python", "Web Development", "AI/ML", "Data Analytics"],
       achievements: [
         "Developing fullstack web applications as products for partners, aimed at increasing their user engagement.",
@@ -61,7 +60,7 @@ export default function ExperienceSection() {
       company: "The University of Texas at Tyler",
       position: "Lab Technician",
       duration: "June 2024 - August 2024",
-      location: "Texas, US",
+      location: "Tyler, TX, US",
       tech: ["R", "Python", "TensorFlow", "Neural Networks"],
       achievements: [
         "Developing new predictive neural network models based on the results of initial models, leveraging R, Python and Tensorflow.",
@@ -72,7 +71,7 @@ export default function ExperienceSection() {
       company: "The University of Texas at Tyler",
       position: "Research Assistant",
       duration: "January 2023 - May 2024",
-      location: "Texas, US",
+      location: "Tyler, TX, US",
       tech: ["R", "Python", "SQL", "TensorFlow", "Big Data", "Linux"],
       achievements: [
         "Spearheaded research with UT Tyler's pharmacy and computer science departments to identify unknown, harmful drug interactions.",
@@ -84,11 +83,12 @@ export default function ExperienceSection() {
       company: "The University of Texas at Tyler",
       position: "Graduate Assistant",
       duration: "September 2022 - December 2022",
-      location: "Texas, US",
+      location: "Tyler, TX, US",
       tech: ["Linux", "Teaching", "Research"],
       achievements: [
-        "Optimizing Linux Servers and increased its performance. Did a lot of literature surveys for upcoming research work.",
-        "Peer reviewed papers.",
+        "Optimized Linux server performance through system tuning and configuration enhancements.",
+        "Conducted in-depth literature reviews to support upcoming research projects.",
+        "Participated in the peer review process for academic papers.",
         "Also performed the duties of a Teaching Assistant for Analysis and Logical Design, improving overall class GPA by 10.42%."
       ]
     },
@@ -96,19 +96,19 @@ export default function ExperienceSection() {
       company: "Woosong University",
       position: "Research Intern",
       duration: "July 2021 - September 2021",
-      location: "Daejeon, South Korea",
+      location: "Daejeon, South Korea (Remote)",
       tech: ["Flutter", "Dart", "Hive", "NoSQL"],
       achievements: [
         "Built a task management application to tackle the time-based planning fallacy using anchoring and adjustment methodology",
         "Local storage management was created using Hive, a NoSQL database to perform CRUD operations on the host's storage",
-        "Illustrated results via several visualization charts following data analytics of timed tasks recorded in the application"
+        "Illustrated user metrics and results via several visualization charts following data analytics of timed tasks recorded in the application"
       ]
     },
     {
       company: "Vault Infosec",
       position: "Intern Project Engineer",
       duration: "July 2020 - November 2020",
-      location: "Chennai, India",
+      location: "Chennai, TN, India (Remote)",
       tech: ["Front-end Development", "UI Design", "API Testing", "Postman"],
       achievements: [
         "Headed the front-end development for creating the administrative pages for a commercial network security product.",
@@ -139,7 +139,24 @@ export default function ExperienceSection() {
                     <Briefcase className="h-5 w-5 text-primary" />
                   </div>
                   <div className="flex-grow">
-                    <p className="font-bold">{job.position}</p>
+                    <div className="flex items-center gap-2">
+                      <p className="font-bold">{job.position}</p>
+                      {job.position === "Chief Technology Officer" && (
+                        <Badge variant="default" className="bg-primary/20 text-primary hover:bg-primary/30">
+                          Promoted from Full Stack Engineer
+                        </Badge>
+                      )}
+                      {job.position === "Lab Technician" && (
+                        <Badge variant="default" className="bg-primary/20 text-primary hover:bg-primary/30">
+                          Promoted from Research Assistant
+                        </Badge>
+                      )}
+                      {job.position === "Research Assistant" && (
+                        <Badge variant="default" className="bg-primary/20 text-primary hover:bg-primary/30">
+                          Promoted from Graduate Assistant
+                        </Badge>
+                      )}
+                    </div>
                     <p className="text-primary">{job.company}</p>
                     <div className="flex flex-wrap gap-2 mt-1 text-sm text-muted-foreground">
                       <span>{job.duration}</span>

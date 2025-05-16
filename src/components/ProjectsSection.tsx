@@ -1,7 +1,7 @@
-
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award } from "lucide-react";
+import { useState } from "react";
 
 interface Project {
   name: string;
@@ -11,6 +11,16 @@ interface Project {
 }
 
 export default function ProjectsSection() {
+  const [expandedProjects, setExpandedProjects] = useState<number[]>([]);
+
+  const toggleProject = (index: number) => {
+    setExpandedProjects(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
+  };
+
   const projects: Project[] = [
     {
       name: "TokGen",
@@ -72,13 +82,19 @@ export default function ProjectsSection() {
                   {project.description}
                 </p>
               </CardContent>
-              <CardFooter className="pt-4 border-t">
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.slice(0, 3).map((tech, techIndex) => (
-                    <Badge key={techIndex} variant="outline">{tech}</Badge>
+              <CardFooter className="pt-4 border-t mt-auto">
+                <div className="flex flex-wrap gap-2 w-full">
+                  {project.tech.slice(0, expandedProjects.includes(index) ? undefined : 3).map((tech, techIndex) => (
+                    <Badge key={techIndex} variant="outline" className="text-xs">{tech}</Badge>
                   ))}
-                  {project.tech.length > 3 && (
-                    <Badge variant="outline">+{project.tech.length - 3} more</Badge>
+                  {!expandedProjects.includes(index) && project.tech.length > 3 && (
+                    <Badge 
+                      variant="outline" 
+                      className="text-xs cursor-pointer hover:bg-primary/10"
+                      onClick={() => toggleProject(index)}
+                    >
+                      +{project.tech.length - 3} more
+                    </Badge>
                   )}
                 </div>
               </CardFooter>

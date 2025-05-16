@@ -14,14 +14,14 @@ export default function EducationSection() {
     {
       degree: "MS in Computer Science",
       institution: "The University of Texas at Tyler",
-      date: "May 2024",
-      location: "Tyler, TX"
+      date: "Aug 2022 - May 2024",
+      location: "Tyler, TX, USA"
     },
     {
       degree: "BE in Electrical and Electronics Engineering",
       institution: "Loyola-ICAM College of Engineering & Technology",
-      date: "Jun 2022",
-      location: "India"
+      date: "Jun 2018 - July 2022",
+      location: "Chennai, TN, India"
     },
   ];
 
