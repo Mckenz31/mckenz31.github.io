@@ -1,86 +1,93 @@
-
 import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-interface TechItem {
-  name: string;
-  color: string;
-}
 
 export default function TechStackSection() {
   const techCategories = {
-    languages: [
-      { name: "JavaScript", color: "bg-tech-javascript text-black" },
-      { name: "TypeScript", color: "bg-tech-typescript text-white" },
-      { name: "Python", color: "bg-tech-python text-white" },
-      { name: "R", color: "bg-blue-500 text-white" },
-      { name: "Dart", color: "bg-sky-500 text-white" },
-      { name: "MySQL", color: "bg-orange-500 text-white" },
-      { name: "Postgres", color: "bg-blue-700 text-white" },
-      { name: "Pinecone", color: "bg-purple-600 text-white" },
-    ],
-    cloud: [
-      { name: "AWS ECS Fargate", color: "bg-tech-aws text-black" },
-      { name: "AWS Lambda", color: "bg-tech-aws text-black" },
-      { name: "AWS Cognito", color: "bg-tech-aws text-black" },
-      { name: "AWS RDS", color: "bg-tech-aws text-black" },
-      { name: "AWS Amplify", color: "bg-tech-aws text-black" },
-      { name: "GCP Firestore", color: "bg-tech-gcp text-white" },
-      { name: "GCP Cloud Run", color: "bg-tech-gcp text-white" },
-    ],
-    frameworks: [
-      { name: "React", color: "bg-tech-react text-black" },
-      { name: "Flutter", color: "bg-tech-flutter text-white" },
-      { name: "Next.js", color: "bg-tech-nextjs text-white" },
-      { name: "Node.js", color: "bg-green-600 text-white" },
-      { name: "Express", color: "bg-gray-800 text-white" },
-      { name: "Git", color: "bg-orange-600 text-white" },
-      { name: "GitHub", color: "bg-gray-900 text-white" },
-    ],
-    ai: [
-      { name: "AWS Bedrock", color: "bg-tech-aws text-black" },
-      { name: "Vertex AI", color: "bg-tech-gcp text-white" },
-      { name: "LangChain", color: "bg-green-600 text-white" },
-      { name: "LangGraph", color: "bg-blue-600 text-white" },
-      { name: "LlamaIndex", color: "bg-purple-500 text-white" },
-    ],
+    languages: {
+      title: "Languages & DBs",
+      items: [
+        { name: "JavaScript", logo: "https://cdn.simpleicons.org/javascript" },
+        { name: "TypeScript", logo: "https://cdn.simpleicons.org/typescript" },
+        { name: "Python", logo: "https://cdn.simpleicons.org/python" },
+        { name: "R", logo: "https://cdn.simpleicons.org/r" },
+        { name: "Dart", logo: "https://cdn.simpleicons.org/dart" },
+        { name: "MySQL", logo: "https://cdn.simpleicons.org/mysql" },
+        { name: "Postgres", logo: "https://cdn.simpleicons.org/postgresql" },
+        { name: "Pinecone" },
+      ]
+    },
+    cloud: {
+      title: "Cloud",
+      items: [
+        { name: "AWS ECS Fargate", logo: "https://icon.icepanel.io/AWS/svg/Compute/Fargate.svg" },
+        { name: "AWS Lambda", logo: "https://icon.icepanel.io/AWS/svg/Compute/Lambda.svg" },
+        { name: "AWS Cognito", logo: "https://icon.icepanel.io/AWS/svg/Security-Identity-Compliance/Cognito.svg" },
+        { name: "AWS RDS", logo: "https://icon.icepanel.io/AWS/svg/Database/RDS.svg" },
+        { name: "AWS Amplify", logo: "https://cdn.simpleicons.org/awsamplify" },
+        { name: "GCP Firestore", logo: "https://cdn.simpleicons.org/googlecloud" },
+        { name: "GCP Cloud Run", logo: "https://cdn.simpleicons.org/googlecloud" },
+      ]
+    },
+    frameworks: {
+      title: "Frameworks & Tools",
+      items: [
+        { name: "React", logo: "https://cdn.simpleicons.org/react" },
+        { name: "Flutter", logo: "https://cdn.simpleicons.org/flutter" },
+        { name: "Next.js", logo: "https://cdn.simpleicons.org/nextdotjs" },
+        { name: "Node.js", logo: "https://cdn.simpleicons.org/nodedotjs" },
+        { name: "Express", logo: "https://cdn.simpleicons.org/express" },
+        { name: "Git", logo: "https://cdn.simpleicons.org/git" },
+        { name: "GitHub", logo: "https://cdn.simpleicons.org/github" },
+      ]
+    },
+    ai: {
+      title: "AI/ML Tools",
+      items: [
+        { name: "AWS SageMaker", logo: "https://icon.icepanel.io/AWS/svg/Machine-Learning/SageMaker.svg" },
+        { name: "Vertex AI", logo: "https://cdn.simpleicons.org/googlecloud" },
+        { name: "LangChain"}, // custom or local
+        { name: "LangGraph"},
+        { name: "LlamaIndex"},
+      ]
+    },
   };
 
   return (
-    <section id="tech-stack" className="py-20 px-4 bg-secondary/50">
+    <section id="tech-stack" className="py-12 px-4 bg-secondary/50">
       <div className="container max-w-5xl mx-auto">
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-2 tracking-tight">Tech Stack</h2>
-          <div className="h-1 w-20 bg-primary rounded"></div>
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-2 tracking-tight">Tech Stack</h2>
+          <div className="h-1 w-16 bg-primary rounded"></div>
         </div>
 
-        <Tabs defaultValue="languages" className="w-full">
-          <TabsList className="grid grid-cols-4 mb-6">
-            <TabsTrigger value="languages">Languages & DBs</TabsTrigger>
-            <TabsTrigger value="cloud">Cloud</TabsTrigger>
-            <TabsTrigger value="frameworks">Frameworks & Tools</TabsTrigger>
-            <TabsTrigger value="ai">AI/ML Tools</TabsTrigger>
-          </TabsList>
-          
-          {Object.entries(techCategories).map(([category, techs]) => (
-            <TabsContent value={category} key={category}>
-              <Card className="glass-card">
-                <CardContent className="p-6">
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {techs.map((tech: TechItem) => (
-                      <span 
+        <div className="space-y-6">
+          {Object.entries(techCategories).map(([key, category]) => (
+            <div key={key} className="mb-4">
+              <h3 className="text-xl font-semibold mb-3">{category.title}</h3>
+              <Card className="glass-card border-0">
+                <CardContent className="p-3">
+                  <div className="flex flex-wrap gap-2">
+                    {category.items.map((tech) => (
+                      <span
                         key={tech.name}
-                        className={`tech-tag transition-all duration-200 hover:scale-105 ${tech.color}`}
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium bg-primary/20 text-primary hover:bg-primary/30 transition-colors border border-primary/30"
                       >
+                        {tech.logo && (
+                          <img
+                            src={tech.logo}
+                            alt={tech.name}
+                            className="w-5 h-5"
+                            title={tech.name}
+                          />
+                        )}
                         {tech.name}
                       </span>
                     ))}
                   </div>
                 </CardContent>
               </Card>
-            </TabsContent>
+            </div>
           ))}
-        </Tabs>
+        </div>
       </div>
     </section>
   );
